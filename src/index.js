@@ -1,13 +1,21 @@
 import React from 'react'
+import { createStore, applyMiddleware, compose } from 'redux'
+import logger from 'redux-logger'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './App'
 import allReducers from './store/reducers'
 import './Reset.css'
 
-let store = createStore(allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__
+    ? compose(
+        applyMiddleware(logger),
+        window.__REDUX_DEVTOOLS_EXTENSION__(),
+      )
+    : applyMiddleware(logger),
+);
 
 ReactDOM.render(
   <React.StrictMode>
