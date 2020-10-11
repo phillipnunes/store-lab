@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react'
-import Character from './Character'
-import { getCharacters } from './api.js'
+import { useDispatch } from 'react-redux'
+import getCharacters from './api/getCharacters'
+import Container from './components/container'
+import setCharacters from './store/actions/setCharacters'
 
 function App() {
+  const dispatch = useDispatch()
   useEffect(() => {
-    async function get(){
-      const response = await getCharacters();
-      console.log(response);
-    }
+    getCharacters().then(response => {
+      dispatch(setCharacters(response))
+    }).catch(err => console.error('Failed to save characters into the store', err))
+  }, [dispatch])
 
-    get()
-  }, [])
   return (
     <div className="app">
-      <Character />
-      <Character />
-      <Character />
+      <Container />
     </div>
   );
 }
