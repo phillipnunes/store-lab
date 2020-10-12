@@ -4,7 +4,7 @@ import Character from '../character'
 
 export default function Container() {
   const characters = useSelector(state => state.characters)
-  const isFetching = useSelector(state => state.api)
+  const isFetching = useSelector(state => state.api.isFetching)
   return (
     <div style={{
       display: `${isFetching ? 'none': 'block'}`

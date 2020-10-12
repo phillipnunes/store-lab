@@ -4,3 +4,9 @@ export const setCharacters = payload => {
     payload
   }
 }
+
+export const getCharactersRequest = () => {
+  return {
+    type: 'GET_CHARACTERS_REQUEST'
+  }
+}

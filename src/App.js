@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Container from './components/container'
-import { charactersThunks } from './store/thunks/characters'
+import { getCharactersRequest } from './store/actions/characters'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(charactersThunks.getCharacters())
+    dispatch(getCharactersRequest())
   }, [dispatch])
 
   return (
