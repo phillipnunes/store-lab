@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import charactersReducer from './characters.js'
+import charactersReducers from './characters'
+import apiReducers from './api'
 
 const allReducers = combineReducers({
-  characters: charactersReducer
+  characters: charactersReducers,
+  api: apiReducers
 })
 
 export default allReducers

@@ -1,4 +1,4 @@
-const characters = (state = [], action) => {
+const charactersReducers = (state = [], action) => {
   switch (action.type) {
     case 'SET_CHARACTERS':
       return [...action.payload]
@@ -7,4 +7,4 @@ const characters = (state = [], action) => {
   }
 }
 
-export default characters
+export default charactersReducers

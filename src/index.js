@@ -1,4 +1,5 @@
 import React from 'react'
+import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import logger from 'redux-logger'
 import ReactDOM from 'react-dom'
@@ -7,14 +8,15 @@ import App from './App'
 import allReducers from './store/reducers'
 import './Reset.css'
 
+const middlewares = applyMiddleware(thunk, logger)
 const store = createStore(
   allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__
     ? compose(
-        applyMiddleware(logger),
+        middlewares,
         window.__REDUX_DEVTOOLS_EXTENSION__(),
       )
-    : applyMiddleware(logger),
+    : middlewares,
 );
 
 ReactDOM.render(
